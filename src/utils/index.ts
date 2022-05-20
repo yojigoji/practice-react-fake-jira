@@ -1,3 +1,4 @@
+import { computeHeadingLevel } from "@testing-library/react";
 import { useEffect, useState } from "react";
 
 export const isFalsy = (value: any) => (value === 0 ? false : !value);
@@ -32,6 +33,24 @@ export const useDebounce = <V>(value: V, delay?: number) => {
   return debouncedValue;
 };
 
-export const useArray = () => {
+export const useArray = <T>(arr: T[]) => {
   // hello，请把作业写在这里吧，写完记得再对照作业要求检查一下
+  const [value, setValue] = useState(arr);
+
+  const clear = () => setValue([]);
+
+  const add = (item: T) => setValue([...value, item]);
+
+  const removeIndex = (index: number) => {
+    const copy = [...value];
+    copy.splice(index, 1);
+    setValue(copy);
+  };
+
+  return {
+    value,
+    clear,
+    removeIndex,
+    add,
+  };
 };

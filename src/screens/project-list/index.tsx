@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import qs from "qs";
 import { cleanObject } from "utils";
 
-// const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = process.env.REACT_APP_API_URL;
 
 export const ProjectListScreen = () => {
   const [param, setParam] = useState({
@@ -15,17 +15,17 @@ export const ProjectListScreen = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch(
-      `http://localhost:3001/projects?${qs.stringify(cleanObject(param))}`
-    ).then(async (res) => {
-      if (res.ok) {
-        setList(await res.json());
+    fetch(`${apiUrl}/projects?${qs.stringify(cleanObject(param))}`).then(
+      async (res) => {
+        if (res.ok) {
+          setList(await res.json());
+        }
       }
-    });
+    );
   }, [param]);
 
   useEffect(() => {
-    fetch("http://localhost:3001/users").then(async (res) => {
+    fetch(`${apiUrl}/users`).then(async (res) => {
       if (res.ok) {
         setUsers(await res.json());
       }
