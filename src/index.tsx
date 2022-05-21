@@ -13,7 +13,6 @@ const root = ReactDOM.createRoot(
 loadDevTools(() => {
   root.render(
     <React.StrictMode>
-      123
       <AppProviders>
         <App />
       </AppProviders>
