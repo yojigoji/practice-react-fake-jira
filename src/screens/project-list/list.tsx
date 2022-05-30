@@ -7,6 +7,7 @@ interface Project {
   personId: string;
   pin: boolean;
   organization: string;
+  created: number;
 }
 
 interface ListProps {
@@ -22,6 +23,10 @@ export const List = ({ users, list }: ListProps) => {
         {
           title: "名称",
           dataIndex: "name",
+        },
+        {
+          title: "部门",
+          dataIndex: "organization",
         },
         {
           title: "负责人",
