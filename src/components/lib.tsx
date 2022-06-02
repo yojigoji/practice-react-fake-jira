@@ -32,13 +32,13 @@ const FullPage = styled.div`
 
 export const FullPageLoading = () => (
   <FullPage>
-    <Spin size={"large"}></Spin>
+    <Spin size={"large"} />
   </FullPage>
 );
 
 export const FullPageErrorFallback = ({ error }: { error: Error | null }) => (
   <FullPage>
-    <DevTools></DevTools>
+    <DevTools />
     <Typography.Text type="danger">{error?.message}</Typography.Text>
   </FullPage>
 );
