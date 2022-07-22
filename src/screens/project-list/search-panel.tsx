@@ -1,4 +1,4 @@
-import { Form, Input, Select } from "antd";
+import { Form, Input } from "antd";
 import { UserSelect } from "components/user-select";
 import { Project } from "./list";
 
@@ -44,23 +44,7 @@ export const SearchPanel = ({ users, param, setParam }: SearchPanelProps) => {
               personId: value,
             });
           }}
-        ></UserSelect>
-        {/* <Select
-          defaultValue={param.personId}
-          onChange={(value) => {
-            setParam({
-              ...param,
-              personId: value,
-            });
-          }}
-        >
-          <Select.Option value={""}>负责人</Select.Option>
-          {users.map((user) => (
-            <Select.Option value={user.id + user.name} key={user.id}>
-              {user.name}
-            </Select.Option>
-          ))}
-        </Select> */}
+        />
       </Form.Item>
     </Form>
   );
