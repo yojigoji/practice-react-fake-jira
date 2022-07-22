@@ -7,7 +7,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { loadServer, DevTools } from "jira-dev-tool";
 // 务必在jira-dev-tool引入
-import "antd/dist/antd.less";
 import { AppProviders } from "context";
 
 const root = ReactDOM.createRoot(

@@ -7,12 +7,14 @@ import { Typography } from "antd";
 import { useProjects } from "utils/project";
 import { useUsers } from "utils/user";
 import { useUrlQueryParam } from "utils/url";
+import { useProjectsSearchParams } from "./util";
 
 export const ProjectListScreen = () => {
-  const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
-  const [param, setParam] = useUrlQueryParam(keys);
-  const debouncedParam = useDebounce(param, 200);
-  const { isLoading, error, data: list } = useProjects(debouncedParam);
+  // const [keys] = useState<("name" | "personId")[]>(["name", "personId"]);
+  const [param, setParam] = useProjectsSearchParams();
+  // const debouncedParam = useDebounce(projectParam, 200);
+  // console.log("param", param);
+  const { isLoading, error, data: list } = useProjects(param);
 
   const { data: users } = useUsers();
 
@@ -28,7 +30,7 @@ export const ProjectListScreen = () => {
   );
 };
 
-ProjectListScreen.whyDidYouRender = false;
+ProjectListScreen.whyDidYouRender = true;
 
 const Container = styled.div`
   padding: 3.2rem;
