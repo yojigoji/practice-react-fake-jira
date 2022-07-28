@@ -8,6 +8,7 @@ import { FullPageErrorFallback, FullPageLoading } from "components/lib";
 import * as authStore from "store/auth.slice";
 import { useDispatch, useSelector } from "react-redux";
 import { bootstrap, selectUser } from "store/auth.slice";
+import { useAppDispatch } from "store";
 
 export interface AuthForm {
   username: string;
@@ -34,7 +35,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     isError,
     run,
   } = useAsync<User | null>();
-  const dispatch: (...args: unknown[]) => Promise<User> = useDispatch();
+  const dispatch: (...args: unknown[]) => Promise<User> = useAppDispatch();
 
   useMount(() => {
     run(dispatch(bootstrap()));
@@ -52,7 +53,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 };
 
 export const useAuth = () => {
-  const dispatch: (...args: unknown[]) => Promise<User> = useDispatch();
+  const dispatch: (...args: unknown[]) => Promise<User> = useAppDispatch();
   const user = useSelector(selectUser);
   const login = (form: AuthForm) => dispatch(authStore.login(form));
   const register = (form: AuthForm) => dispatch(authStore.register(form));
