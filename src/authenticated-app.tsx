@@ -7,7 +7,6 @@ import { Button, Dropdown, Menu } from "antd";
 import { Route, Routes, BrowserRouter as Router } from "react-router-dom";
 import { ProjectScreen } from "screens/project";
 import { resetRoute } from "utils/index";
-import { useState } from "react";
 import { ProjectModal } from "screens/project-list/project-modal";
 import { ProjectPopover } from "components/project-popover";
 

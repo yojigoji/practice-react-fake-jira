@@ -24,8 +24,7 @@ interface ListProps extends TableProps<Project> {
 
 export const List = ({ users, ...props }: ListProps) => {
   const { mutate } = useEditProject();
-  const pinProject = (id: number) => (pin: boolean) =>
-    mutate({ id, pin }).then(props.refresh);
+  const pinProject = (id: number) => (pin: boolean) => mutate({ id, pin });
 
   const dispatch = useDispatch();
 
@@ -96,6 +95,7 @@ export const List = ({ users, ...props }: ListProps) => {
                         编辑
                       </ButtonNoPadding>
                     </Menu.Item>
+                    <Menu.Item>删除</Menu.Item>
                   </Menu>
                 }
               >
